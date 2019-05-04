@@ -24,7 +24,7 @@
 (defvar realgud-pat-hash)
 (declare-function make-realgud-loc-pat (realgud-loc))
 
-(defvar realgud:ipdb-pat-hash (make-hash-table :test 'equal)
+(defvar realgud--ipdb-pat-hash (make-hash-table :test 'equal)
   "Hash key is the what kind of pattern we want to match:
 backtrace, prompt, etc.  The values of a hash entry is a
 realgud-loc-pat struct")
@@ -137,7 +137,7 @@ realgud-loc-pat struct")
 
 (setf (gethash "ipdb" realgud-pat-hash) realgud:ipdb-pat-hash)
 
-(defvar realgud:ipdb-command-hash (make-hash-table :test 'equal)
+(defvar realgud--ipdb-command-hash (make-hash-table :test 'equal)
   "Hash key is command name like 'finish' and the value is
 the ipdb command to use, like 'return'")
 
@@ -158,4 +158,4 @@ the ipdb command to use, like 'return'")
 
 (setf (gethash "ipdb" realgud-command-hash) realgud:ipdb-command-hash)
 
-(provide-me "realgud:ipdb-")
+(provide-me "realgud--ipdb-")

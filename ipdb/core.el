@@ -22,10 +22,10 @@
 
 ;; FIXME: I think the following could be generalized and moved to
 ;; realgud-... probably via a macro.
-(defvar realgud:ipdb-minibuffer-history nil
+(defvar realgud--ipdb-minibuffer-history nil
   "minibuffer history list for the command `ipdb'.")
 
-(defvar realgud:ipdb-remote-minibuffer-history nil
+(defvar realgud--ipdb-remote-minibuffer-history nil
   "minibuffer history list for the command `ipdb-remote'.")
 
 (easy-mmode-defmap ipdb-minibuffer-local-map
@@ -39,7 +39,7 @@
   (realgud-query-cmdline
    'ipdb-suggest-invocation
    ipdb-minibuffer-local-map
-   'realgud:ipdb-minibuffer-history
+   'realgud--ipdb-minibuffer-history
    opt-debugger))
 
 ;; FIXME: I think this code and the keymaps and history
@@ -48,7 +48,7 @@
   (realgud-query-cmdline
    'ipdb-suggest-invocation
    ipdb-minibuffer-local-map
-   'realgud:ipdb-remote-minibuffer-history
+   'realgud--ipdb-remote-minibuffer-history
    "telnet"))
 
 (defun ipdb-parse-cmd-args (orig-args)
@@ -166,7 +166,7 @@ Note that the script name path has been expanded via `expand-file-name'.
   )
 
   ;; To silence Warning: reference to free variable
-(defvar realgud:ipdb-command-name)
+(defvar realgud--ipdb-command-name)
 
 (defun ipdb-remote-suggest-invocation (debugger-name)
   "Suggest an ipdb command invocation via `realgud-suggest-invocaton'"
@@ -174,8 +174,8 @@ Note that the script name path has been expanded via `expand-file-name'.
 
 (defun ipdb-suggest-invocation (debugger-name)
   "Suggest a ipdb command invocation via `realgud-suggest-invocaton'"
-  (realgud-suggest-invocation (or debugger-name realgud:ipdb-command-name)
-			      realgud:ipdb-minibuffer-history
+  (realgud-suggest-invocation (or debugger-name realgud--ipdb-command-name)
+			      realgud--ipdb-minibuffer-history
 			      "python" "\\.py"))
 
 (defun ipdb-reset ()
@@ -196,19 +196,19 @@ breakpoints, etc.)."
 ;;   (setcdr (assq 'ipdb-debugger-support-minor-mode minor-mode-map-alist)
 ;; 	  ipdb-debugger-support-minor-mode-map-when-deactive))
 
-(defconst realgud:ipdb-complete-script
+(defconst realgud--ipdb-complete-script
   (concat
    "from IPython import get_ipython;"
    "comp = '''%s''';"
    "prefix, candidates = get_ipython().Completer.complete(line_buffer = comp);"
    "print(';'.join([prefix] + candidates))"))
 
-(defun realgud:ipdb-backend-complete ()
+(defun realgud--ipdb-backend-complete ()
   "Send a command to the ipdb buffer and parse the output.
 
 The idea here is to rely on the
 `comint-redirect-send-command-to-process' function to send a
-python command `realgud:ipdb-complete-script' that will return
+python command `realgud--ipdb-complete-script' that will return
 the completions for the given input."
   (interactive)
   (let ((buffer (current-buffer))
@@ -220,7 +220,7 @@ the completions for the given input."
     ;; get the input string
     (when (> end-pos start-pos)
       (let* ((input-str (buffer-substring-no-properties start-pos end-pos))
-             (command-str (format realgud:ipdb-complete-script input-str))
+             (command-str (format realgud--ipdb-complete-script input-str))
              (output-str (with-temp-buffer
                            (comint-redirect-send-command-to-process
                             command-str (current-buffer) process nil t)
@@ -233,17 +233,17 @@ the completions for the given input."
              (prefix (car output-values)))
         (list (- end-pos (length prefix)) end-pos (cdr output-values))))))
 
-(defun realgud:ipdb-completion-at-point ()
-  (let ((ipdb (realgud:ipdb-backend-complete)))
+(defun realgud--ipdb-completion-at-point ()
+  (let ((ipdb (realgud--ipdb-backend-complete)))
     (when ipdb
       (list (nth 0 ipdb)
             (nth 1 ipdb)
             (nth 2 ipdb)
             :exclusive 'yes))))
 
-(defun realgud:ipdb-customize ()
+(defun realgud--ipdb-customize ()
   "Use `customize' to edit the settings of the `ipdb' debugger."
   (interactive)
-  (customize-group 'realgud:ipdb))
+  (customize-group 'realgud--ipdb))
 
-(provide-me "realgud:ipdb-")
+(provide-me "realgud--ipdb-")

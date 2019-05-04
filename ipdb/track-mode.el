@@ -17,11 +17,11 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; Python "ipdb" Debugger tracking a comint buffer.
 
-(eval-when-compile (require 'cl))
+(eval-when-compile (require 'cl-lib))
 
 (require 'realgud)
 
-(require-relative-list '("core" "init") "realgud:ipdb-")
+(require-relative-list '("core" "init") "realgud--ipdb-")
 
 (realgud-track-mode-vars "ipdb")
 
@@ -71,4 +71,5 @@ a process shell.
       ))
 )
 
-(provide-me "realgud:ipdb-")
+(provide-me "realgud--ipdb-")
+q
