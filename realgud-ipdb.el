@@ -1,4 +1,4 @@
-;;; realgud-ipdb.el --- realgud front-end to ipdb
+;;; realgud-ipdb.el --- Realgud front-end to ipdb
 
 ;; Author: Rocky Bernstein
 ;; Version: 1.0.0
