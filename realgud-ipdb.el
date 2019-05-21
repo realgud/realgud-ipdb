@@ -1,6 +1,6 @@
 ;;; realgud-ipdb.el --- Realgud front-end to ipdb
 
-;; Author: Rocky Bernstein
+;; Author: Rocky Bernstein <rocky@gnu.org>
 ;; Version: 1.0.0
 ;; Package-Requires: ((realgud "1.4.5") (load-relative "1.2") (cl-lib "0.5") (emacs "24"))
 ;; URL: http://github.com/rocky/realgud-ipdb
