@@ -1,4 +1,4 @@
-;;; realgud-ipdb.el --- Realgud front-end to ipdb
+;;; realgud-ipdb.el --- Realgud front-end to ipdb -*- lexical-binding: t -*-
 
 ;; Author: Rocky Bernstein <rocky@gnu.org>
 ;; Version: 1.0.0
