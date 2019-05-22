@@ -13,6 +13,7 @@
 
 (require 'comint)
 (require 'realgud)
+(require 'load-relative)
 
 (declare-function realgud-lang-mode? 'realgud-lang)
 (declare-function realgud-parse-command-arg 'realgud-core)

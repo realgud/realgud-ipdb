@@ -19,6 +19,7 @@
 
 (eval-when-compile (require 'cl-lib))   ;For setf.
 
+(require 'load-relative)
 (require 'realgud)
 
 (defvar realgud-pat-hash)

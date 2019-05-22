@@ -20,6 +20,7 @@
 (eval-when-compile (require 'cl-lib))
 
 (require 'realgud)
+(require 'load-relative)
 
 (require-relative-list '("core" "init") "realgud--ipdb-")
 
