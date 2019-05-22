@@ -27,7 +27,7 @@
 (defgroup realgud:ipdb nil
   "The realgud interface to the Python ipdb debugger"
   :group 'realgud
-  :version "24.3")
+  :version "25.1")
 
 (declare-function make-realgud-loc "realgud-loc" (a b c d e f))
 
