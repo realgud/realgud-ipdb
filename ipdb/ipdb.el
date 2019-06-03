@@ -52,7 +52,7 @@ This should be an executable on your path, or an absolute file name."
 (declare-function realgud:run-debugger 'realgud:run)
 
 ;;;###autoload
-(defun realgud--ipdb (&optional opt-cmd-line no-reset)
+(defun realgud:ipdb (&optional opt-cmd-line no-reset)
   "Invoke the ipdb Python debugger and start the Emacs user interface.
 
 String OPT-CMD-LINE specifies how to run ipdb. You will be prompted
@@ -88,7 +88,7 @@ fringe and marginal icons.
 
 
 ;;;###autoload
-(defun realgud--ipdb-remote (&optional opt-cmd-line no-reset)
+(defun realgud:ipdb-remote (&optional opt-cmd-line no-reset)
   "Invoke the ipdb Python debugger and start the Emacs user interface.
 
 String OPT-CMD-LINE specifies how to run ipdb. You will be prompted
@@ -122,4 +122,4 @@ fringe and marginal icons.
 ;;;###autoload
 (defalias 'ipdb 'realgud:ipdb)
 
-(provide-me "realgud--")
+(provide-me "realgud-")
