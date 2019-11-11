@@ -175,7 +175,7 @@ Note that the script name path has been expanded via `expand-file-name'.
 
 (defun ipdb-suggest-invocation (debugger-name)
   "Suggest a ipdb command invocation via `realgud-suggest-invocaton'"
-  (realgud-suggest-invocation (or debugger-name realgud--ipdb-command-name)
+  (realgud-suggest-invocation (or realgud--ipdb-command-name debugger-name)
 			      realgud--ipdb-minibuffer-history
 			      "python" "\\.py"))
 
