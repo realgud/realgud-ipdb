@@ -48,7 +48,7 @@ This should be an executable on your path, or an absolute file name."
 (declare-function ipdb-track-mode       'realgud:ipdb-track)
 (declare-function ipdb-query-cmdline    'realgud:ipdb-core)
 (declare-function ipdb-parse-cmd-args   'realgud:ipdb-core)
-(declare-function realgud:ipdb-completion-at-point 'realgud:ipdb-core)
+(declare-function realgud--ipdb-completion-at-point 'realgud:ipdb-core)
 (declare-function realgud:run-debugger 'realgud:run)
 
 ;;;###autoload
@@ -74,14 +74,14 @@ fringe and marginal icons.
   (interactive)
   (let ((cmd-buf (realgud:run-debugger "ipdb" 'ipdb-query-cmdline
                                        'ipdb-parse-cmd-args
-                                       'realgud:ipdb-minibuffer-history
+                                       'realgud--ipdb-minibuffer-history
                                        opt-cmd-line no-reset))
         )
     (add-hook 'completion-at-point-functions
-              'realgud:ipdb-completion-at-point nil t)
+              'realgud--ipdb-completion-at-point nil t)
     (with-current-buffer cmd-buf
       (add-hook 'completion-at-point-functions
-		'realgud:ipdb-completion-at-point nil t)
+		'realgud--ipdb-completion-at-point nil t)
       )
     cmd-buf)
   )
@@ -110,11 +110,11 @@ fringe and marginal icons.
   (interactive)
   (let ((cmd-buf (realgud:run-debugger "ipdb" 'ipdb-remote-query-cmdline
                                        'ipdb-parse-remote-cmd-args
-                                       'realgud:ipdb-remote-minibuffer-history
+                                       'realgud--ipdb-remote-minibuffer-history
                                        opt-cmd-line no-reset "remote-ipdb"))
         )
     (add-hook 'completion-at-point-functions
-              'realgud:ipdb-completion-at-point nil t)
+              'realgud--ipdb-completion-at-point nil t)
     cmd-buf)
   )
 
