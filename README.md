@@ -24,6 +24,7 @@ From github source
 -------------------
 
 * Have `realgud` and `test-simple` installed.
+* Edit this README.md file. (Or rather just make sure that you are in the _directory_ where this file is located).
 * From inside GNU Emacs, evaluate:
 ```lisp
   (compile (format "EMACSLOADPATH=:%s:%s ./autogen.sh" (file-name-directory (locate-library "test-simple.elc")) (file-name-directory (locate-library "realgud.elc"))))
